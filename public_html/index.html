@@ -1,0 +1,382 @@
+<!DOCTYPE html>
+<!--
+Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+Click nbfs://nbhost/SystemFileSystem/Templates/ClientSide/html.html to edit this template
+-->
+
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Operating System-UFPS</title>
+    <meta name="description" content="" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="apple-touch-icon" href="apple-touch-icon.png" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous" />
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
+        crossorigin="anonymous"></script>
+    <!-- Enlace al archivo CSS de Bootstrap -->
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" />
+
+
+
+</head>
+
+<header>
+    <nav class="navbar navbar-expand-lg bg-danger">
+        <div class="container-fluid">
+            <img class="navbar-brand" src="img/UFPS_Logo.png" alt="" width="100" height="100" />
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarText"
+                aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarText">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        <a class="nav-link active text-white" aria-current="page"
+                            href="https://es.wikipedia.org/wiki/Proceso_(inform%C3%A1tica)#:~:text=Los%20estados%20de%20un%20proceso,para%20el%20uso%20de%20este.">Informacion</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link text-white" href="#">Simulador</a>
+                    </li>
+                </ul>
+                <img class="navbar-brand ms-auto" src="img/logo_png.png" width="100" height="100" />
+            </div>
+        </div>
+    </nav>
+</header>
+
+<body>
+
+    <div class="card text-center">
+        <div class="card-header">
+
+        </div>
+    </div>
+
+    <div class="container mt-4">
+        <h1 class="text-center mb-4">Simulador de Estados de Proceso</h1>
+
+        <p>
+            <!-- Comment -->
+            En sistemas operativos, un "estado de proceso" se refiere a la situación
+            en la que se encuentra un programa en ejecución en un momento dado. Los
+            procesos en un sistema operativo pasan por distintos estados a medida
+            que son ejecutados y gestionados por el sistema operativo.
+        </p>
+    </div>
+    <div class="row">
+        <div class="col-sm-6 mb-3 mb-sm-0">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">1. Informacion de los procesos</h5>
+                    <p class="card-text">
+                        En la siguiente tabla se muestra dos columnas, la primera es la etiqueta, la cual se va a
+                        ingresar en la cadena, la segunda columna es la descripcion de dicha letra.
+                    </p>
+                    <div class="container mt-4">
+                        <table class="table table-bordered">
+                            <thead>
+                                <tr>
+                                    <th>Etiqueta</th>
+                                    <th>Descripción</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>I</td>
+                                    <td>Declaración de E/S</td>
+                                </tr>
+                                <tr>
+                                    <td>F</td>
+                                    <td>Finalizar tarea</td>
+                                </tr>
+                                <tr>
+                                    <td>t</td>
+                                    <td>Se acabó el tiempo</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-sm-6">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">2. Ingreso de la cadena de los procesos</h5>
+                    <div id="inputContainer">
+                        <p>
+                            De las etiquetas anteriores debes escribir tu cadena que contiene la información del
+                            proceso. Cada línea de código está identificada por un número secuencial.
+                        </p>
+                        <div class="container mt-4">
+                            <div class="row no-gutters">
+                                <div class="col-md-6">
+                                    <input type="text" class="form-control" id="processInput" placeholder="1,2,3,I,T..."
+                                        aria-label="Username" />
+                                </div>
+                                <div class="col-md-6">
+                                    <button type="button" class="btn btn-danger" onclick="addProcess()">Add Information
+                                        Process</button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <p>Procesos cargados en memoria:</p>
+                        <p id="size"></p>
+                        <p></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="card text-center">
+        <div class="card-header">
+
+        </div>
+        <div class="card-body">
+            <h5 class="card-title">Tabla de procesos</h5>
+            <p class="card-text text-center text-center mb-4">
+                En la siguiente tabla se mostrara el numero de procesos cargado en memoria y su correspondiente cadena,
+                por favor dar click derecho al boton presente a continuacion para poder detallar.
+            </p>
+            <button type="button" class="btn btn-danger  " onclick="showR()">Mostar</button>
+
+            <div class="container">
+                <div class="table-responsive mt-3">
+                    <table class="table table-bordered table-striped">
+                        <thead class="thead-dark">
+                            <tr>
+                                <th scope="col">Process ID</th>
+                                <th scope="col">Content</th>
+                            </tr>
+                        </thead>
+                        <tbody id="outBody">
+                            <!-- Puedes agregar filas dinámicamente aquí -->
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+        <div class="card-footer text-body-secondary">
+
+        </div>
+    </div>
+
+
+
+    <div class="card text-center">
+        <div class="card-body">
+            <h5 class="card-title">3. Ingreso de el ciclo del Dispatcher</h5>
+            <div class="container">
+                <div class="row no-gutters align-items-center d-flex justify-content-between">
+                    <div class="col-md-6 mb-0">
+                        <input type="text" class="form-control" id="addCycles" placeholder="" aria-label="Username" />
+                    </div>
+                    <div class="col-md-6 mb-0">
+                        <button type="button" class="btn btn-danger" onclick="addCycles()">Agregar Dispatcher</button>
+                    </div>
+                </div>
+            </div>
+
+            <p>Procesos cargados en memoria:</p>
+            <p id="ciclo"></p>
+            <p></p>
+
+        </div>
+        <div class="card-footer text-body-secondary">
+        </div>
+
+
+        <div class="card text-center">
+            <div class="card-body">
+                <h5 class="card-title">4. Ingreso de el ciclo de las Interrupciones</h5>
+
+                <div class="container mt-4">
+                    <div class="row no-gutters">
+                        <div class="col-md-6">
+                            <input type="text" class="form-control" id="Interrupts" placeholder=""
+                                aria-label="Username" />
+                        </div>
+                        <div class="col-md-6">
+                            <button type="button" class="btn btn-danger" onclick="Interrupts()">Agregar
+                                Interupciones</button>
+                        </div>
+                    </div>
+                </div>
+
+                <p>Procesos cargados en memoria:</p>
+                <p id="proceso"></p>
+                <p></p>
+            </div>
+            <div class="card-footer text-body-secondary">
+            </div>
+
+            <div class="card text-center">
+
+                <div class="card-body">
+                    <h5 class="card-title">Tabla pintar</h5>
+                    <div class="container">
+                        <div class="table-responsive mt-3">
+                            <div id="tabla"></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="card-footer text-body-secondary">
+                </div>
+            </div>
+
+            <div class="card-body">
+                <h5 class="card-title">Tabla Trace</h5>
+                <div class="container">
+                    <div class="table-responsive mt-3">
+                        <div id="tablaTrace"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="card-footer text-body-secondary">
+            </div>
+        </div>
+
+        <div class="card-body">
+            <h5 class="card-title">Tabla de procesos</h5>
+            <p class="card-text text-center text-center mb-4">
+                En la siguiente tabla se mostrara el numero de procesos cargado en memoria y su correspondiente
+                cadena,
+                por favor dar click derecho al boton presente a continuacion para poder detallar.
+            </p>
+            <button type="button" class="btn btn-danger  " onclick="estado()">Mostar</button>
+
+            <div class="container">
+                <div class="table-responsive mt-3">
+                    <table class="table table-bordered table-striped">
+                        <thead class="thead-dark">
+                            <tr>
+                                <th scope="col">Proceso</th>
+                                <th scope="col">Tiempo de Ejecucion</th>
+                                <th scope="col">Estado Final</th>
+                            </tr>
+                        </thead>
+                        <tbody id="Body">
+                            <!-- Puedes agregar filas dinámicamente aquí -->
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+        <div class="card-footer text-body-secondary">
+
+        </div>
+    </div>
+
+
+
+    <div class="card text-center">
+
+        <div class="card-body">
+            <h5 class="card-title">Tabla Representacion de colores</h5>
+            <p class="card-text">La siguiente tabla representa los distintos colores para los estados, donde:
+                Amarillo: Indica la conclusión exitosa de un proceso o tarea.
+                Gris: Representa la disposición y preparación del proceso para su ejecución, en espera de acción.
+                Rojo: Se refiere a un estado bloqueado, indicando que el proceso no puede avanzar debido a
+                condiciones específicas.
+                Verde: Denota que el proceso se encuentra actualmente en ejecución..</p>
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th class="table-cell">Color</th>
+                        <th class="table-cell">Estado</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td class="bg-success p-3"></td>
+                        <td class="p-3">Running</td>
+                    </tr>
+                    <tr>
+                        <td class="bg-secondary p-3"></td>
+                        <td class="p-3">Ready</td>
+                    </tr>
+                    <tr>
+                        <td class="bg-danger p-3"></td>
+                        <td class="p-3">Block</td>
+                    </tr>
+                    <tr>
+                        <td class="bg-warning p-3"></td>
+                        <td class="p-3">Finish</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="card-footer text-body-secondary">
+
+        </div>
+    </div>
+    <style>
+        table {
+            border-collapse: collapse;
+            width: 60%;
+            margin-top: 20px;
+        }
+
+        table,
+        th,
+        td {
+            border: 1px solid black;
+        }
+
+        th,
+        td {
+            padding: 15px;
+            text-align: center;
+        }
+    </style>
+
+    </head>
+
+
+
+    <script src="js/script.js"></script>
+    <script src="js/vendor/bootstrap.min.js"></script>
+    <script src="js/main.js"></script>
+</body>
+
+<footer class="text-center bg-dark">
+    <!-- Grid container -->
+    <div class="container p-4 pb-0">
+        <!-- Section: Social media -->
+        <section class="mb-4">
+
+            <!-- Sistema Operativo -->
+            <a data-mdb-ripple-init class="btn text-white btn-floating m-1" style="background-color: #dd4b39" href="#!"
+                role="button"><i class="fab fa-google"></i></a>
+
+            <!-- Uvirtual -->
+            <a data-mdb-ripple-init class="btn text-white btn-floating m-1" style="background-color: #ac2bac" href="#!"
+                role="button"><i class="fab fa-instagram"></i></a>
+
+            <!-- Gitlab -->
+            <a data-mdb-ripple-init class="btn text-white btn-floating m-1" style="background-color: #0082ca" href="#!"
+                role="button"><i class="fab fa-linkedin-in"></i></a>
+            <!-- Github -->
+            <a data-mdb-ripple-init class="btn text-white btn-floating m-1" style="background-color: #333333" href="#!"
+                role="button"><i class="fab fa-github"></i></a>
+        </section>
+        <!-- Section: Social media -->
+    </div>
+
+    <div class="text-center p-3" style="background-color: rgba(255, 255, 255, 0.05)">
+        <p class="text-center p-3 text-white">
+            © 2023 Copyright: Sistemas Operativos UFPS - II 1151936-1151996
+        </p>
+    </div>
+</footer>
+
+</html>
